@@ -60,6 +60,14 @@ class App extends Component {
         high24hr: 0,
         low24hr: 0
       },
+      ethCapCoin: {
+        usd: 0,
+        trends: {
+            oneHour: 0,
+            oneDay: 0,
+            oneWeek: 0
+        }                    
+      },
       ethPolo: {
         high24hr: 0,
         low24hr: 0
@@ -186,6 +194,26 @@ class App extends Component {
             }
         })
     })
+    this.ethCapCoin()
+  }
+
+  ethCapCoin() {
+    fetch('https://api.coinmarketcap.com/v1/ticker/ethereum/?convert=USD', {
+        method: 'GET',
+    }).then(res => res.json())
+    .then(res => {
+        this.setState({                
+            ethCapCoin: {
+                usd: res[0].price_usd,
+                trends: {
+                    oneHour: res[0].percent_change_1h,
+                    oneDay: res[0].percent_change_24h,
+                    oneWeek: res[0].percent_change_7d
+                }                    
+            }
+        })
+    })
+    // this.ethKraken()
   }
 
   render() {
