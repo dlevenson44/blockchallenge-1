@@ -57,13 +57,17 @@ class App extends Component {
       dashPolo: {
         high24hr: 0,
         low24hr: 0
+      },
+      ethPolo: {
+        high24hr: 0,
+        low24hr: 0
+      },
+      ltcPolo: {
+        high24hr: 0,
+        low24hr: 0
       }
     }
     this.btcCapCoin = this.btcCapCoin.bind(this)
-    this.btcKraken = this.btcKraken.bind(this)
-    this.btcPolo = this.btcPolo.bind(this)
-    this.dashCapCoin = this.dashCapCoin.bind(this)
-    this.dashKraken = this.dashKraken.bind(this)
   }
 
   componentWillMount() {
@@ -128,6 +132,14 @@ class App extends Component {
             dashPolo: {
               high24hr: res.USDT_DASH.high24hr,
               low24hr: res.USDT_DASH.low24hr
+            },
+            ethPolo: {
+              high24hr: res.USDT_ETH.high24hr,
+              low24hr: res.USDT_ETH.low24hr
+            },
+            ltcPolo: {
+              high24hr: res.USDT_LTC.high24hr,
+              low24hr: res.USDT_LTC.low24hr
             }
         })
     })
