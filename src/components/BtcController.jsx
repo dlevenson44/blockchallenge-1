@@ -2,6 +2,7 @@ import React from 'react'
 
 const BtcController = (props) => {
     // convert strings to numbers and round
+    let usd = parseFloat(props.btcCapCoin.usd).toFixed(2)
     let usHigh24Hr = parseFloat(props.btcPolo.high24hr).toFixed(2)
     let usLow24Hr = parseFloat(props.btcPolo.low24hr).toFixed(2)
     let euro = parseFloat(props.btcKraken.eur).toFixed(2)
@@ -24,7 +25,7 @@ const BtcController = (props) => {
     return(
         <div>
             <h1>BTC -CapCoin</h1>
-            <p>${props.btcCapCoin.usd} per BTC</p>
+            <p>${usd} per BTC</p>
             <h5>BTC Trends:</h5>
                 <p>{props.btcCapCoin.trends.oneHour}% change in last hour</p>
                 <p>{props.btcCapCoin.trends.oneDay}% change in last 24 hours</p>
