@@ -36,7 +36,6 @@ class BTCUSD extends Component {
                 }
             })
         })
-        // window.location.reload()
     }
 
     render() {
