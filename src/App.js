@@ -14,12 +14,9 @@ class App extends Component {
     this.state = {      
       selectedCurrency: '',
       btcCapCoin: {
-        usd: 0,
-        trends: {
-            oneHour: 0,
-            oneDay: 0,
-            oneWeek: 0
-        }                    
+        oneHour: 0,
+        oneDay: 0,
+        oneWeek: 0                   
       },      
       btcKraken: {
         eur: 0,
@@ -103,13 +100,33 @@ class App extends Component {
       ltcPolo: {
         high24hr: 0,
         low24hr: 0
-      }
+      },
+      usd: {
+        btc: 0,
+        dash: 0,
+        eth: 0,
+        ltc: 0
+    }      
     }
     this.btcCapCoin = this.btcCapCoin.bind(this)
   }
 
   componentWillMount() {
     this.btcCapCoin()
+  }
+
+  btcCoinDesk() {
+      fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json', {
+          method: 'GET'
+      }).then(res => res.json())
+      .then(res => {
+          console.log(res)
+          this.setState({
+              usd: {
+                  btc: res.bpi.USD.rate,
+              }
+          })
+      })
   }
   
   btcCapCoin() {
@@ -119,12 +136,9 @@ class App extends Component {
     .then(res => {
         this.setState({                
             btcCapCoin: {
-                usd: res[0].price_usd,
-                trends: {
-                    oneHour: res[0].percent_change_1h,
-                    oneDay: res[0].percent_change_24h,
-                    oneWeek: res[0].percent_change_7d
-                }                    
+                oneHour: res[0].percent_change_1h,
+                oneDay: res[0].percent_change_24h,
+                oneWeek: res[0].percent_change_7d            
             }
         })
     })
@@ -136,7 +150,6 @@ class App extends Component {
         method: 'GET',
     }).then(res => res.json())
     .then(res => {
-        console.log(res)
         this.setState({
             btcKraken: {
                 eur: res.result.XXBTZCAD.c[0],
@@ -158,7 +171,6 @@ class App extends Component {
         method: 'GET',
     }).then(res => res.json())
     .then(res => {
-        console.log(res)
         this.setState({
             btcPolo: {
                 high24hr: res.USDT_BTC.high24hr,
@@ -208,7 +220,6 @@ class App extends Component {
       method: 'GET',
     }).then(res => res.json())
     .then(res => {
-        console.log(res)
         this.setState({
             dashKraken: {
                 eur: res.result.DASHEUR.c[0],
@@ -249,7 +260,6 @@ class App extends Component {
       method: 'GET',
     }).then(res => res.json())
     .then(res => {
-        console.log(res)
         this.setState({
             ethKraken: {
                 eur: res.result.XETHZEUR.c[0],
@@ -290,7 +300,6 @@ class App extends Component {
       method: 'GET',
     }).then(res => res.json())
     .then(res => {
-        console.log(res)
         this.setState({
             ltcKraken: {
                 eur: res.result.XLTCZUSD.c[0],
@@ -304,9 +313,11 @@ class App extends Component {
             }
         })
     })
+    this.btcCoinDesk()
   }
 
   render() {
+      console.log(this)
     return (
       <div className="App">
         <h1>hello world</h1>
