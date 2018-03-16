@@ -5,6 +5,8 @@ import './App.css';
 // import components
 import BtcController from './components/BtcController'
 import DashController from './components/DashController'
+import EthController from './components/EthController'
+import LtcController from './components/LtcController'
 
 class App extends Component {
   constructor(props) {
@@ -197,6 +199,8 @@ class App extends Component {
         <DashController dashCapCoin={this.state.dashCapCoin}
         dashKraken={this.state.dashKraken}
         dashPolo={this.state.dashPolo} />
+        <EthController />
+        <LtcController />
       </div>
     );
   }
