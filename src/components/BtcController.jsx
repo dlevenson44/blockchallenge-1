@@ -18,6 +18,8 @@ const BtcController = (props) => {
 
     // calculate alt per btc values
     let dashPerBtc = (btc / dash).toFixed(2)    
+    let ethPerBtc = (btc / eth).toFixed(2)
+    let ltcPerBtc = (btc / ltc).toFixed(2)
 
     return(
         <div>
@@ -38,7 +40,9 @@ const BtcController = (props) => {
             <p>${usHigh24Hr} is the 24 hour high</p>
             <p>${usLow24Hr} is the 24 hour low</p>
             <h3>ALT per BTC values</h3>
-            <p>{dashPerBtc}</p>
+            <p>{dashPerBtc} DASH per BTC</p>
+            <p>{ethPerBtc} ETH per BTC</p>
+            <p>{ltcPerBtc} LTC per BTC</p>
         </div>
     )
 }
