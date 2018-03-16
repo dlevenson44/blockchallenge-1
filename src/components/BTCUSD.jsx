@@ -25,7 +25,6 @@ class BTCUSD extends Component {
             method: 'GET',
         }).then(res => res.json())
         .then(res => {
-            console.log(res[0].price_usd)
             this.setState({                
                 btcCapCoin: {
                     usd: res[0].price_usd,
@@ -41,7 +40,6 @@ class BTCUSD extends Component {
     }
 
     render() {
-        console.log(this)
         return(
             <div>
                 <h1>BitCoin</h1>
