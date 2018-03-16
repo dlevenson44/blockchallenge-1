@@ -68,6 +68,16 @@ class App extends Component {
             oneWeek: 0
         }                    
       },
+      ethKraken: {
+        eur: 0,
+        trends: {
+            lowAsk: 0,
+            low: 0,
+            highBid: 0,
+            high: 0,
+            trades: 0
+        }
+      },
       ethPolo: {
         high24hr: 0,
         low24hr: 0
@@ -213,7 +223,27 @@ class App extends Component {
             }
         })
     })
-    // this.ethKraken()
+    this.ethKraken()
+  }
+  ethKraken() {
+    fetch('https://api.kraken.com/0/public/Ticker?pair=XETHZEUR', {
+      method: 'GET',
+    }).then(res => res.json())
+    .then(res => {
+        console.log(res)
+        this.setState({
+            ethKraken: {
+                eur: res.result.XETHZEUR.c[0],
+                trends: {
+                    lowAsk: res.result.XETHZEUR.a[0],
+                    low: res.result.XETHZEUR.l[1],
+                    highBid: res.result.XETHZEUR.b[0],
+                    high: res.result.XETHZEUR.h[1],
+                    trades: res.result.XETHZEUR.t[1]
+                }
+            }
+        })
+    })
   }
 
   render() {
