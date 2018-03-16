@@ -13,7 +13,7 @@ const LtcController = (props) => {
     let btc = parseFloat(props.btcValue).toFixed(2)
 
     // calculate ltc per btc
-    let ltcPerBtc = (btc / usd).toFixed(2)
+    let ltcPerBtc = (usd / btc).toFixed(2)
 
     return(
         <div>
