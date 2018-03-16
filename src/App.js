@@ -318,8 +318,12 @@ class App extends Component {
         <DashController dashCapCoin={this.state.dashCapCoin}
         dashKraken={this.state.dashKraken}
         dashPolo={this.state.dashPolo} />
-        <EthController />
-        <LtcController />
+        <EthController ethCapCoin={this.state.ethCapCoin}
+        ethKraken={this.state.ethKraken}
+        ethPolo={this.state.ethPolo} />        
+        <LtcController ltcCapCoin={this.state.ltcCapCoin}
+        ltcKraken={this.state.ltcKraken}
+        ltcPolo={this.state.ltcPolo} />
       </div>
     );
   }
