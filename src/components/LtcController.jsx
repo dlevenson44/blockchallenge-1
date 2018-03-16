@@ -33,7 +33,7 @@ const LtcController = (props) => {
             <h1>LTC - LTC pOLO</h1>
             <p>${usHigh24Hr} is the 24 hour high</p>
             <p>${usLow24Hr} is the 24 hour low</p>
-            <p>{ltcPerBtc} DASH per BTC</p>
+            <p>{ltcPerBtc} LTC per BTC</p>
         </div>
     )
 }
