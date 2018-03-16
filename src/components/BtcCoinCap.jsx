@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class BTCUSD extends Component {
+class BtcCoinCap extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -66,4 +66,4 @@ class BTCUSD extends Component {
 //     )
 // }
 
-export default BTCUSD
+export default BtcCoinCap

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class BTCKRAKEN extends Component {
+class btcKraken extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -57,4 +57,4 @@ class BTCKRAKEN extends Component {
     }
 }
 
-export default BTCKRAKEN;
+export default btcKraken;
