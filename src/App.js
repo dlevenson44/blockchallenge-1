@@ -43,6 +43,16 @@ class App extends Component {
           oneDay: 0,
           oneWeek: 0,
         }
+      },
+      dashKraken: {
+        eur: 0,
+        trends: {
+            lowAsk: 0,
+            low: 0,
+            highBid: 0,
+            high: 0,
+            trades: 0
+        }
       }
     }
     this.btcCapCoin = this.btcCapCoin.bind(this)
@@ -131,7 +141,29 @@ class App extends Component {
             }
         })
     })
-    // this.dashKraken()
+    this.dashKraken()
+  }
+
+  dashKraken() {
+    fetch('https://api.kraken.com/0/public/Ticker?pair=DASHEUR', {
+      method: 'GET',
+    }).then(res => res.json())
+    .then(res => {
+        console.log(res)
+        this.setState({
+            dashKraken: {
+                eur: res.result.DASHEUR.c[0],
+                trends: {
+                    lowAsk: res.result.DASHEUR.a[0],
+                    low: res.result.DASHEUR.l[1],
+                    highBid: res.result.DASHEUR.b[0],
+                    high: res.result.DASHEUR.h[1],
+                    trades: res.result.DASHEUR.t[1]
+                }
+            }
+        })
+    })
+    // this.dashPolo()
   }
 
   render() {
@@ -142,7 +174,8 @@ class App extends Component {
         <BtcController btcCapCoin={this.state.btcCapCoin} 
         btcKraken={this.state.btcKraken}
         btcPolo={this.state.btcPolo} />
-        <DashController dashCapCoin={this.state.dashCapCoin} />
+        <DashController dashCapCoin={this.state.dashCapCoin}
+        dashKraken={this.state.dashKraken} />
       </div>
     );
   }
