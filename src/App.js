@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 // import components
-import BTCUSD from './components/BTCUSD'
-import BTCPOLO from './components/BTCPOLO'
-import BTCKRAKEN from './components/BTCKRAKEN'
+import BtcController from './components/BtcController'
+// import BtcCoinCap from './components/BtcCoinCap'
+// import BtcPolo from './components/BtcPolo'
+// import BtcKraken from './components/BtcKraken'
 
 class App extends Component {
   constructor(props) {
@@ -13,82 +14,16 @@ class App extends Component {
     this.state = {      
       selectedCurrency: ''
     }
-    // this.btcCapCoin = this.btcCapCoin.bind(this)
   }
 
   render() {
     return (
       <div className="App">
         <h1>hello world</h1>
-        <BTCUSD />
-        <BTCPOLO />
-        <BTCKRAKEN />
+        <BtcController />
       </div>
     );
   }
 }
 
 export default App;
-
-
-
-// btc: {
-//   usd: 0,
-//   eur: 0,
-//   eurInfo: {
-//     ask: 0,
-//     bid: 0,
-//     high: 0,
-//     low: 0
-//   },
-//   trends: {
-//     oneHour: 0,
-//     oneDay: 0,
-//     oneWeek: 0
-//   }
-// },
-// dash: {
-//   usd: 0,
-//   eur: 0,
-//   eurInfo: {
-//     ask: 0,
-//     bid: 0,
-//     high: 0,
-//     low: 0
-//   },
-//   trends: {
-//     oneHour: 0,
-//     oneDay: 0,
-//     oneWeek: 0
-//   }
-// },
-// eth: {
-//   usd: 0,
-//   eur: 0,
-//   eurInfo: {
-//     ask: 0,
-//     bid: 0,
-//     high: 0,
-//     low: 0
-//   },
-//   trends: {
-//     oneHour: 0,
-//     oneDay: 0,
-//     oneWeek: 0
-//   }
-// },
-// ltc: {
-//   usd: 0,
-//   eur: 0,
-//   eurInfo: {
-//     ask: 0,
-//     bid: 0,
-//     high: 0,
-//     low: 0
-//   },
-//   trends: {
-//     oneHour: 0,
-//     oneDay: 0,
-//     oneWeek: 0
-//   }
-// }
