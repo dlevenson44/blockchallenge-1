@@ -11,60 +11,93 @@ class App extends Component {
     this.state = {
       btc: {
         usd: 0,
+        eur: 0,
         trends: {
-          oneHour: 0,
-          oneDay: 0,
-          oneWeek: 0
+          oneHourUS: 0,
+          oneHourEU: 0,
+          oneDayUS: 0,
+          oneDayEU: 0,
+          oneWeekUS: 0,
+          oneWeekEU: 0
         }
       },
       dash: {
         usd: 0,
+        eur: 0,
         trends: {
-          oneHour: 0,
-          oneDay: 0,
-          oneWeek: 0
+          oneHourUS: 0,
+          oneHourEU: 0,
+          oneDayUS: 0,
+          oneDayEU: 0,
+          oneWeekUS: 0,
+          oneWeekEU: 0
         }
       },
       eth: {
         usd: 0,
+        eur: 0,
         trends: {
-          oneHour: 0,
-          oneDay: 0,
-          oneWeek: 0
+          oneHourUS: 0,
+          oneHourEU: 0,
+          oneDayUS: 0,
+          oneDayEU: 0,
+          oneWeekUS: 0,
+          oneWeekEU: 0
         }
       },
       ltc: {
         usd: 0,
+        eur: 0,
         trends: {
-          oneHour: 0,
-          oneDay: 0,
-          oneWeek: 0,
+          oneHourUS: 0,
+          oneHourEU: 0,
+          oneDayUS: 0,
+          oneDayEU: 0,
+          oneWeekUS: 0,
+          oneWeekEU: 0
         }
       }
     }
-    this.getBtcTicker = this.getBtcTicker.bind(this)
+    this.btcCapCoin = this.btcCapCoin.bind(this)
   }
 
   componentWillMount() {
-    this.getBtcTicker()
+    this.btcCapCoin()
   }
 
-  getBtcTicker() {
+  btcCapCoin() {
     fetch('https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=USD', {
       method: 'GET',
     }).then(res => res.json())
     .then(res => {
+      console.log(res[0])
       this.setState({
         btc: {
           usd: res[0].price_usd,
           trends: {
-            oneHour: res[0].percent_change_1h,
-            oneDay: res[0].percent_change_24h,
-            oneWeek: res[0].percent_change_1w
+            oneHourUS: res[0].percent_change_1h,
+            oneDayUS: res[0].percent_change_24h,
+            oneWeekUS: res[0].percent_change_7d
           }
         }
       })
-    })
+    }) 
+    fetch('https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=EUR', {
+      method: 'GET',
+    }).then(res => res.json())
+    .then(res => {
+      console.log(res[0])
+      this.setState({
+        btc: {
+          eur: res[0].price_eur,
+          trends: {
+            oneHourEU: res[0].percent_change_1h,
+            oneDayEU: res[0].percent_change_24h,
+            oneWeekEU: res[0].percent_change_7d
+          }
+        }
+      })
+    })     
   }
 
   render() {
