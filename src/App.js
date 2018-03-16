@@ -4,6 +4,7 @@ import './App.css';
 
 // import components
 import BTCUSD from './components/BTCUSD'
+import BTCPOLO from './components/BTCPOLO'
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
       <div className="App">
         <h1>hello world</h1>
         <BTCUSD />
+        <BTCPOLO />
       </div>
     );
   }
