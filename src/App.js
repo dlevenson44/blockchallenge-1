@@ -312,20 +312,24 @@ class App extends Component {
     return (
       <div className="App">
         <h1>hello world</h1>
+        
         <BtcController btcCapCoin={this.state.btcCapCoin} 
         btcKraken={this.state.btcKraken}
         btcPolo={this.state.btcPolo}
         dashValue={this.state.dashCapCoin.usd}
         ethValue={this.state.ethCapCoin.usd} 
         ltcValue={this.state.ltcCapCoin.usd} />
+        
         <DashController dashCapCoin={this.state.dashCapCoin}
         dashKraken={this.state.dashKraken}
         dashPolo={this.state.dashPolo}
         btcValue={this.state.btcCapCoin.usd} />
+        
         <EthController ethCapCoin={this.state.ethCapCoin}
         ethKraken={this.state.ethKraken}
         ethPolo={this.state.ethPolo}
         btcValue={this.state.btcCapCoin.usd} />        
+        
         <LtcController ltcCapCoin={this.state.ltcCapCoin}
         ltcKraken={this.state.ltcKraken}
         ltcPolo={this.state.ltcPolo}
