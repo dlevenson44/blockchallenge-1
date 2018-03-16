@@ -322,6 +322,11 @@ class App extends Component {
         ethValue={this.state.ethCapCoin.usd}
         ltcValue={this.state.ltcCapCoin.usd} />
 
+        <DashController btcValue={this.state.btcValue}
+        dashCapCoin={this.state.dashCapCoin}
+        dashKraken={this.state.dashKraken}
+        dashPolo={this.state.dashPolo} />
+
       </div>
     );
   }

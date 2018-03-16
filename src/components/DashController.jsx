@@ -13,7 +13,7 @@ const DashController = (props) => {
     let btc = parseFloat(props.btcValue).toFixed(2)
 
     // calculate dash per btc
-    let dashPerBtc = (btc / usd).toFixed(2)
+    let dashPerBtc = (usd / btc).toFixed(2)
 
     return(
         <div>
