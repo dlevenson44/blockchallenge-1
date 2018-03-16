@@ -13,7 +13,7 @@ const EthController = (props) => {
     let btc = parseFloat(props.btcValue).toFixed(2)
 
     // calculate eth per btc
-    let ethPerBtc = (btc / usd).toFixed(2)
+    let ethPerBtc = (usd / btc).toFixed(2)
 
     return(
         <div>
