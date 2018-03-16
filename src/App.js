@@ -9,10 +9,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      btcTicker: '',
-      ethTicker: '',
-      dashTicker: '',
-      ltcTicker: ''
+      btc: {
+        usd: 0,
+        trends: {
+          oneHour: 0,
+          oneDay: 0,
+          oneWeek: 0
+        }
+      },
+      ethTicker: {},
+      dashTicker: {},
+      ltcTicker: {}
     }
     this.getBtcTicker = this.getBtcTicker.bind(this)
   }
@@ -26,19 +33,24 @@ class App extends Component {
       method: 'GET',
     }).then(res => res.json())
     .then(res => {
-      // console.log(res[0])
       this.setState({
-        btcTicker: res[0]
+        btc: {
+          usd: res[0].price_usd,
+          trends: {
+            oneHour: res[0].percent_change_1h,
+            oneDay: res[0].percent_change_24h,
+            oneWeek: res[0].percent_change_1w
+          }
+        }
       })
     })
   }
 
   render() {
-    // console.log(this.state.btcTicker)
     return (
       <div className="App">
         <h1>hello world</h1>
-        <BtcTracker btcTracker={this.state.btcTicker} />
+        <BtcTracker btc={this.state.btc} />
       </div>
     );
   }
