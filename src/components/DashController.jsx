@@ -7,6 +7,8 @@ const DashController = (props) => {
         <div>
             <h1>DASH-- CapCoin</h1>
             <p>${usd} per DASH</p>
+            <h1>DASH-- Kraken</h1>
+            <p>€{props.dashKraken.eur} per DASH</p>
         </div>
     )
 }
