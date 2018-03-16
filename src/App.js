@@ -53,12 +53,17 @@ class App extends Component {
             high: 0,
             trades: 0
         }
+      },
+      dashPolo: {
+        high24hr: 0,
+        low24hr: 0
       }
     }
     this.btcCapCoin = this.btcCapCoin.bind(this)
     this.btcKraken = this.btcKraken.bind(this)
     this.btcPolo = this.btcPolo.bind(this)
     this.dashCapCoin = this.dashCapCoin.bind(this)
+    this.dashKraken = this.dashKraken.bind(this)
   }
 
   componentWillMount() {
@@ -107,7 +112,7 @@ class App extends Component {
   }
 
   btcPolo() {
-    fetch(' https://poloniex.com/public?command=returnTicker', {
+    fetch('https://poloniex.com/public?command=returnTicker', {
         method: 'GET',
     }).then(res => res.json())
     .then(res => {
@@ -119,6 +124,10 @@ class App extends Component {
                 btcToDash: res.BTC_DASH.last,
                 btcToEth: res.BTC_ETH.last,
                 btcToLtc: res.BTC_LTC.last
+            },
+            dashPolo: {
+              high24hr: res.USDT_DASH.high24hr,
+              low24hr: res.USDT_DASH.low24hr
             }
         })
     })
@@ -163,7 +172,6 @@ class App extends Component {
             }
         })
     })
-    // this.dashPolo()
   }
 
   render() {
@@ -175,7 +183,8 @@ class App extends Component {
         btcKraken={this.state.btcKraken}
         btcPolo={this.state.btcPolo} />
         <DashController dashCapCoin={this.state.dashCapCoin}
-        dashKraken={this.state.dashKraken} />
+        dashKraken={this.state.dashKraken}
+        dashPolo={this.state.dashPolo} />
       </div>
     );
   }
