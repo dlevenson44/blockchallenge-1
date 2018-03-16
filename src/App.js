@@ -13,6 +13,7 @@ class App extends Component {
     super(props)
     this.state = {      
       selectedCurrency: '',
+      btcValue: 0,
       btcCapCoin: {
         oneHour: 0,
         oneDay: 0,
@@ -100,19 +101,13 @@ class App extends Component {
       ltcPolo: {
         high24hr: 0,
         low24hr: 0
-      },
-      usd: {
-        btc: 0,
-        dash: 0,
-        eth: 0,
-        ltc: 0
-    }      
+      }, 
     }
-    this.btcCapCoin = this.btcCapCoin.bind(this)
+    this.btcCoinDesk = this.btcCoinDesk.bind(this)
   }
 
   componentWillMount() {
-    this.btcCapCoin()
+    this.btcCoinDesk()
   }
 
   btcCoinDesk() {
@@ -122,11 +117,10 @@ class App extends Component {
       .then(res => {
           console.log(res)
           this.setState({
-              usd: {
-                  btc: res.bpi.USD.rate,
-              }
+            btcValue: res.bpi.USD.rate,
           })
       })
+      this.btcCapCoin()
   }
   
   btcCapCoin() {
@@ -138,7 +132,7 @@ class App extends Component {
             btcCapCoin: {
                 oneHour: res[0].percent_change_1h,
                 oneDay: res[0].percent_change_24h,
-                oneWeek: res[0].percent_change_7d            
+                oneWeek: res[0].percent_change_7d       
             }
         })
     })
@@ -313,7 +307,6 @@ class App extends Component {
             }
         })
     })
-    this.btcCoinDesk()
   }
 
   render() {
@@ -321,28 +314,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>hello world</h1>
-        
-        <BtcController btcCapCoin={this.state.btcCapCoin} 
+        <BtcController btcValue={this.state.btcValue} 
+        btcCapCoin={this.state.btcCapCoin}
         btcKraken={this.state.btcKraken}
         btcPolo={this.state.btcPolo}
         dashValue={this.state.dashCapCoin.usd}
-        ethValue={this.state.ethCapCoin.usd} 
+        ethValue={this.state.ethCapCoin.usd}
         ltcValue={this.state.ltcCapCoin.usd} />
-        
-        <DashController dashCapCoin={this.state.dashCapCoin}
-        dashKraken={this.state.dashKraken}
-        dashPolo={this.state.dashPolo}
-        btcValue={this.state.btcCapCoin.usd} />
-        
-        <EthController ethCapCoin={this.state.ethCapCoin}
-        ethKraken={this.state.ethKraken}
-        ethPolo={this.state.ethPolo}
-        btcValue={this.state.btcCapCoin.usd} />        
-        
-        <LtcController ltcCapCoin={this.state.ltcCapCoin}
-        ltcKraken={this.state.ltcKraken}
-        ltcPolo={this.state.ltcPolo}
-        btcValue={this.state.btcCapCoin.usd} />
+
       </div>
     );
   }
