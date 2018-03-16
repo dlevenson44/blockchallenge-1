@@ -1,5 +1,9 @@
+// import react and stylesheet
 import React, { Component } from 'react';
 import './App.css';
+
+// import components
+import BtcTracker from './components/BtcTracker'
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +17,7 @@ class App extends Component {
     this.getBtcTicker = this.getBtcTicker.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getBtcTicker()
   }
 
@@ -30,11 +34,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.btcTicker)
+    // console.log(this.state.btcTicker)
     return (
       <div className="App">
         <h1>hello world</h1>
-        <h3>{this.state.btcTicker.name}</h3>
+        <BtcTracker btcTracker={this.state.btcTicker} />
       </div>
     );
   }

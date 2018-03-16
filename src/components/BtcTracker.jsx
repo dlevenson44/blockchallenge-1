@@ -3,7 +3,7 @@ import React from 'react'
 const BtcTracker = (props) => {
     return(
         <div>
-            <h1>hello btctracker</h1>
+            <h1>{props.btcTracker.name}</h1>
         </div>
     )
 }
