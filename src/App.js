@@ -308,7 +308,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this)
     return (
       <div className="App">
         <h1>hello world</h1>

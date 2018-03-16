@@ -10,6 +10,15 @@ const BtcController = (props) => {
     let euHigh24Hr = parseFloat(props.btcKraken.trends.high).toFixed(2)
     let euLow24Hr = parseFloat(props.btcKraken.trends.low).toFixed(2)
     
+    // convert alt values to numeric data type and round to 2 decimals
+    let btc = parseFloat(props.btcCapCoin.usd)
+    let dash = parseFloat(props.dashValue)
+    let eth = parseFloat(props.ethValue)
+    let ltc = parseFloat(props.ltcValue)
+
+    // calculate alt per btc values
+    let dashPerBtc = (btc / dash).toFixed(2)    
+
     return(
         <div>
             <h1>BTC -CapCoin</h1>
@@ -28,6 +37,8 @@ const BtcController = (props) => {
             <h1>BTC - btc pOLO</h1>
             <p>${usHigh24Hr} is the 24 hour high</p>
             <p>${usLow24Hr} is the 24 hour low</p>
+            <h3>ALT per BTC values</h3>
+            <p>{dashPerBtc}</p>
         </div>
     )
 }
