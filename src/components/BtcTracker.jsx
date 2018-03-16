@@ -4,7 +4,7 @@ const BtcTracker = (props) => {
     return(
         <div>
             <h1>Bitcoin</h1>
-            <p>${props.btc.usd} per BTC</p>
+            <p>${props.btc.usd} USD per BTC</p>
             <h5>BTC Trends:</h5>
             <ul>
                 <li>{props.btc.trends.oneHour}</li>

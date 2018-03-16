@@ -17,9 +17,30 @@ class App extends Component {
           oneWeek: 0
         }
       },
-      ethTicker: {},
-      dashTicker: {},
-      ltcTicker: {}
+      dash: {
+        usd: 0,
+        trends: {
+          oneHour: 0,
+          oneDay: 0,
+          oneWeek: 0
+        }
+      },
+      eth: {
+        usd: 0,
+        trends: {
+          oneHour: 0,
+          oneDay: 0,
+          oneWeek: 0
+        }
+      },
+      ltc: {
+        usd: 0,
+        trends: {
+          oneHour: 0,
+          oneDay: 0,
+          oneWeek: 0,
+        }
+      }
     }
     this.getBtcTicker = this.getBtcTicker.bind(this)
   }
