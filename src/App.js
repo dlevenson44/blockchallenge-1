@@ -82,6 +82,24 @@ class App extends Component {
         high24hr: 0,
         low24hr: 0
       },
+      ltcCapCoin: {
+        usd: 0,
+        trends: {
+            oneHour: 0,
+            oneDay: 0,
+            oneWeek: 0
+        }                    
+      },
+      ltcKraken: {
+        eur: 0,
+        trends: {
+            lowAsk: 0,
+            low: 0,
+            highBid: 0,
+            high: 0,
+            trades: 0
+        }
+      },
       ltcPolo: {
         high24hr: 0,
         low24hr: 0
@@ -225,6 +243,7 @@ class App extends Component {
     })
     this.ethKraken()
   }
+
   ethKraken() {
     fetch('https://api.kraken.com/0/public/Ticker?pair=XETHZEUR', {
       method: 'GET',
@@ -240,6 +259,48 @@ class App extends Component {
                     highBid: res.result.XETHZEUR.b[0],
                     high: res.result.XETHZEUR.h[1],
                     trades: res.result.XETHZEUR.t[1]
+                }
+            }
+        })
+    })
+    this.ltcCapCoin()
+  }
+
+  ltcCapCoin() {
+    fetch('https://api.coinmarketcap.com/v1/ticker/litecoin/?convert=USD', {
+        method: 'GET',
+    }).then(res => res.json())
+    .then(res => {
+      console.log(res, 'hey res')
+        this.setState({                
+            ltcCapCoin: {
+                usd: res[0].price_usd,
+                trends: {
+                    oneHour: res[0].percent_change_1h,
+                    oneDay: res[0].percent_change_24h,
+                    oneWeek: res[0].percent_change_7d
+                }                    
+            }
+        })
+    })
+    this.ltcKraken()
+  }
+
+  ltcKraken() {
+    fetch('https://api.kraken.com/0/public/Ticker?pair=XLTCZUSD', {
+      method: 'GET',
+    }).then(res => res.json())
+    .then(res => {
+        console.log(res)
+        this.setState({
+            ltcKraken: {
+                eur: res.result.XLTCZUSD.c[0],
+                trends: {
+                    lowAsk: res.result.XLTCZUSD.a[0],
+                    low: res.result.XLTCZUSD.l[1],
+                    highBid: res.result.XLTCZUSD.b[0],
+                    high: res.result.XLTCZUSD.h[1],
+                    trades: res.result.XLTCZUSD.t[1]
                 }
             }
         })
