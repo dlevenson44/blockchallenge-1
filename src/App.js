@@ -4,9 +4,7 @@ import './App.css';
 
 // import components
 import BtcController from './components/BtcController'
-// import BtcCoinCap from './components/BtcCoinCap'
-// import BtcPolo from './components/BtcPolo'
-// import BtcKraken from './components/BtcKraken'
+import DashController from './components/DashController'
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +19,7 @@ class App extends Component {
       <div className="App">
         <h1>hello world</h1>
         <BtcController />
+        <DashController />
       </div>
     );
   }
