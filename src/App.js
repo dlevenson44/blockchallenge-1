@@ -314,7 +314,10 @@ class App extends Component {
         <h1>hello world</h1>
         <BtcController btcCapCoin={this.state.btcCapCoin} 
         btcKraken={this.state.btcKraken}
-        btcPolo={this.state.btcPolo} />
+        btcPolo={this.state.btcPolo}
+        dashValue={this.state.dashCapCoin.usd}
+        ethValue={this.state.ethCapCoin.usd} 
+        ltcValue={this.state.ltcCapCoin.usd} />
         <DashController dashCapCoin={this.state.dashCapCoin}
         dashKraken={this.state.dashKraken}
         dashPolo={this.state.dashPolo} />
