@@ -1,6 +1,9 @@
 import React from 'react'
 
 const BtcController = (props) => {
+    // convert strings to numbers for rounding
+    let test = parseFloat(props.btcPolo.high24hr)
+    
     return(
         <div>
             <h1>BTC -CapCoin</h1>
@@ -13,6 +16,8 @@ const BtcController = (props) => {
             </ul>
             <h1>BTC - Kraken</h1>
             <p>€{props.btcKraken.eur} per BTC</p>
+            <h1>BTC - btc pOLO</h1>
+            <p>{test}</p>
         </div>
     )
 }
