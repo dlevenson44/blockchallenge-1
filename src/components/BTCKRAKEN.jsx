@@ -20,7 +20,12 @@ class BTCKRAKEN extends Component {
     render() {
         return(
             <div>
-                <h1>hello world</h1>
+                <p>€{this.state.btcKraken.eur} per Bitcoin</p>
+                <p>€{this.state.btcKraken.trends.lowAsk} is the low ask of the day</p>
+                <p>€{this.state.btcKraken.trends.highAsk} is the high ask of the day</p>
+                <p>€{this.state.btcKraken.trends.low} is the low value of the day</p>
+                <p>€{this.state.btcKraken.trends.high} is the high value of the day</p>
+                <p>{this.state.btcKraken.trends.trades} transactions today</p>
             </div>
         )
     }
