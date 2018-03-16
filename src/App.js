@@ -4,7 +4,7 @@ import './App.css';
 
 // import components
 import BtcController from './components/BtcController'
-// import DashController from './components/DashController'
+import DashController from './components/DashController'
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class App extends Component {
             oneDay: 0,
             oneWeek: 0
         }                    
-      },
+      },      
       btcKraken: {
         eur: 0,
         trends: {
@@ -35,11 +35,20 @@ class App extends Component {
         btcToDash: 0,
         btcToEth: 0,
         btcToLtc: 0
-    }
+      },
+      dashCapCoin: {
+        usd: 0,
+        trends: {
+          oneHour: 0,
+          oneDay: 0,
+          oneWeek: 0,
+        }
+      }
     }
     this.btcCapCoin = this.btcCapCoin.bind(this)
     this.btcKraken = this.btcKraken.bind(this)
     this.btcPolo = this.btcPolo.bind(this)
+    this.dashCapCoin = this.dashCapCoin.bind(this)
   }
 
   componentWillMount() {
@@ -86,6 +95,7 @@ class App extends Component {
     })
     this.btcPolo()
   }
+
   btcPolo() {
     fetch(' https://poloniex.com/public?command=returnTicker', {
         method: 'GET',
@@ -102,6 +112,26 @@ class App extends Component {
             }
         })
     })
+    this.dashCapCoin()
+  }
+
+  dashCapCoin() {
+    fetch('https://api.coinmarketcap.com/v1/ticker/dash/?convert=USD', {
+        method: 'GET',
+    }).then(res => res.json())
+    .then(res => {
+        this.setState({                
+            dashCapCoin: {
+                usd: res[0].price_usd,
+                trends: {
+                    oneHour: res[0].percent_change_1h,
+                    oneDay: res[0].percent_change_24h,
+                    oneWeek: res[0].percent_change_7d
+                }                    
+            }
+        })
+    })
+    // this.dashKraken()
   }
 
   render() {
@@ -112,6 +142,7 @@ class App extends Component {
         <BtcController btcCapCoin={this.state.btcCapCoin} 
         btcKraken={this.state.btcKraken}
         btcPolo={this.state.btcPolo} />
+        <DashController dashCapCoin={this.state.dashCapCoin} />
       </div>
     );
   }
