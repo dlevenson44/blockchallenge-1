@@ -298,9 +298,17 @@ class App extends Component {
         method: 'GET',
     }).then(res => res.json())
     .then(res => {
+        let ltcValueContainer = ''
+        let ltcValue = res[0].price_usd
+        for(let i = 0; i < ltcValue.length - 1; i ++ ) {
+            if (ltcValue[i] !== (",")) {
+                ltcValueContainer += ltcValue[i]
+            }
+        }
+        let actualValue = parseFloat(ltcValueContainer)
         this.setState({                
             ltcCapCoin: {
-                usd: res[0].price_usd,
+                usd: actualValue,
                 trends: {
                     oneHour: res[0].percent_change_1h,
                     oneDay: res[0].percent_change_24h,
