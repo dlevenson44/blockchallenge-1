@@ -5,7 +5,6 @@ import { Doughnut } from 'react-chartjs-2'
 class BtcChart extends Component {
     constructor(props) {
         super(props)
-        // let dashLabel = this.props.altPerBtc.dash
         this.state = {            
             chartData: {
                 labels: [`${(this.props.altPerBtc.dash).toPrecision(4)} DASH per BTC`, 
@@ -29,8 +28,6 @@ class BtcChart extends Component {
                 ]
             }            
         }
-        console.log( this.props.altPerBtc.dash)
-        this.render = this.render.bind(this)
     }
 
     render() {                

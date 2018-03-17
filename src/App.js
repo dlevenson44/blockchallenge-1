@@ -10,7 +10,7 @@ import EthController from './components/EthController'
 import LtcController from './components/LtcController'
 
 // import charts
-import BtcChart from './components/Chart'
+import BtcChart from './components/BtcChart'
 
 class App extends Component {
   constructor(props) {
