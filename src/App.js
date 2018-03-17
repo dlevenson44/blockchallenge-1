@@ -317,6 +317,20 @@ class App extends Component {
       <div className="App">
         <h1>hello world</h1>
 
+        <Chart btcValue={this.state.btcValue}
+            btcCapCoin={this.state.btcCapCoin}
+            btcKraken={this.state.btcKraken}
+            btcPolo={this.state.btcPolo}
+            dashCapCoin={this.state.dashCapCoin}
+            dashKraken={this.state.dashKraken}
+            dashPolo={this.state.dashPolo}
+            ethCapCoin={this.state.ethCapCoin}
+            ethKraken={this.state.ethKraken}
+            ethPolo={this.state.ethPolo}
+            ltcCapCoin={this.state.ltcCapCoin}
+            ltcKraken={this.state.ltcKraken}
+            ltcPolo={this.state.ltcPolo} />
+
         <BtcController btcValue={this.state.btcValue} 
         btcCapCoin={this.state.btcCapCoin}
         btcKraken={this.state.btcKraken}
@@ -339,20 +353,6 @@ class App extends Component {
         ltcCapCoin={this.state.ethCapCoin}
         ltcKraken={this.state.ltcKraken}
         ltcPolo={this.state.ltcPolo} />
-
-        <Chart btcValue={this.state.btcValue}
-            btcCapCoin={this.state.btcCapCoin}
-            btcKraken={this.state.btcKraken}
-            btcPolo={this.state.btcPolo}
-            dashCapCoin={this.state.dashCapCoin}
-            dashKraken={this.state.dashKraken}
-            dashPolo={this.state.dashPolo}
-            ethCapCoin={this.state.ethCapCoin}
-            ethKraken={this.state.ethKraken}
-            ethPolo={this.state.ethPolo}
-            ltcCapCoin={this.state.ltcCapCoin}
-            ltcKraken={this.state.ltcKraken}
-            ltcPolo={this.state.ltcPolo} />
 
       </div>
     );
