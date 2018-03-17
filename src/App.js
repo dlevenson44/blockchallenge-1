@@ -360,19 +360,7 @@ class App extends Component {
 		if (this.state.btcValue !== 0) {
 			return(
 				<div>
-				<Chart btcValue={this.state.btcValue}
-				btcCapCoin={this.state.btcCapCoin}
-				btcKraken={this.state.btcKraken}
-				btcPolo={this.state.btcPolo}
-				dashCapCoin={this.state.dashCapCoin}
-				dashKraken={this.state.dashKraken}
-				dashPolo={this.state.dashPolo}
-				ethCapCoin={this.state.ethCapCoin}
-				ethKraken={this.state.ethKraken}
-				ethPolo={this.state.ethPolo}
-				ltcCapCoin={this.state.ltcCapCoin}
-				ltcKraken={this.state.ltcKraken}
-				ltcPolo={this.state.ltcPolo} />
+				<Chart  altPerBtc={this.state.altPerBtc} />
 				</div>
 			)
 		} else {
