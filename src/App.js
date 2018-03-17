@@ -11,6 +11,7 @@ import LtcController from './components/LtcController'
 
 // import charts
 import BtcChart from './components/BtcChart'
+import DollarChart from './components/DollarChart'
 
 class App extends Component {
   constructor(props) {
@@ -380,6 +381,8 @@ class App extends Component {
       <div className="App">
         <h1>hello world</h1>
         {this.renderChart()}			
+        
+        <DollarChart />
 
         <BtcController btcValue={this.state.btcValue} 
         btcCapCoin={this.state.btcCapCoin}
