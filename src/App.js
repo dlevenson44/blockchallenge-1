@@ -15,7 +15,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {      
-      selectedCurrency: '',
       btcValue: 0,
       btcCapCoin: {
         oneHour: 0,
@@ -118,7 +117,7 @@ class App extends Component {
           method: 'GET'
       }).then(res => res.json())
       .then(res => {
-          console.log(res)
+        //   console.log(res)
           this.setState({
             btcValue: res.bpi.USD.rate,
           })
@@ -313,12 +312,10 @@ class App extends Component {
   }
 
   render() {
-      console.log(this)
+    //   console.log(this)
     return (
       <div className="App">
         <h1>hello world</h1>
-
-        <Chart />
 
         <BtcController btcValue={this.state.btcValue} 
         btcCapCoin={this.state.btcCapCoin}
@@ -343,6 +340,19 @@ class App extends Component {
         ltcKraken={this.state.ltcKraken}
         ltcPolo={this.state.ltcPolo} />
 
+        <Chart btcValue={this.state.btcValue}
+            btcCapCoin={this.state.btcCapCoin}
+            btcKraken={this.state.btcKraken}
+            btcPolo={this.state.btcPolo}
+            dashCapCoin={this.state.dashCapCoin}
+            dashKraken={this.state.dashKraken}
+            dashPolo={this.state.dashPolo}
+            ethCapCoin={this.state.ethCapCoin}
+            ethKraken={this.state.ethKraken}
+            ethPolo={this.state.ethPolo}
+            ltcCapCoin={this.state.ltcCapCoin}
+            ltcKraken={this.state.ltcKraken}
+            ltcPolo={this.state.ltcPolo} />
 
       </div>
     );
