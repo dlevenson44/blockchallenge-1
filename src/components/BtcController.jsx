@@ -18,9 +18,9 @@ const BtcController = (props) => {
     let ltc = parseFloat(props.ltcValue)
 
     // calculate alt per btc values
-    let dashPerBtc = (dash / btc).toFixed(2)
-    let ethPerBtc = (eth / btc).toFixed(2)
-    let ltcPerBtc = (ltc / btc).toFixed(2)
+    let dashPerBtc = (btc / dash).toFixed(2)
+    let ethPerBtc = (btc / eth).toFixed(2)
+    let ltcPerBtc = (btc / ltc).toFixed(2)
 
     return(
         <div>
