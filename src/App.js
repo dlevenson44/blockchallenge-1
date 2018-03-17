@@ -115,7 +115,11 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.btcCoinDesk()
+    this.btcCoinDesk()    
+  }
+
+  componentWillReceiveProps() {
+    this.renderChart()
   }
 
   btcCoinDesk() {
@@ -357,7 +361,7 @@ class App extends Component {
     }
 	
 	renderChart() {
-		if (this.state.btcValue !== 0) {
+		if ((this.state.altPerBtc.dash !== 0) && (this.state.altPerBtc.eth !== Infinity)) {
 			return(
 				<div>
 				<Chart  altPerBtc={this.state.altPerBtc} />

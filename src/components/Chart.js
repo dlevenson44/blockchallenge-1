@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Bar, Line, Pie } from 'react-chartjs-2'
+import { Doughnut } from 'react-chartjs-2'
 
 class Chart extends Component {
     constructor(props) {
         super(props)
-        var dashPerBtc = (this.props.btcValue / this.props.dashCapCoin.usd)
-        var ethPerBtc = (this.props.btcValue / this.props.ethCapCoin.usd)
-        var ltcPerBtc = (this.props.btcValue / this.props.ltcCapCoin.usd)
         this.state = {            
             chartData: {
-                labels: ['DASH', 'ETH', 'LTC'],
+                labels: ['DASH per BTC', 'ETH per BTC', 'LTC per BTC'],
                 datasets: [
                     {
                         label: 'BitCoin per AltCoin',
                         data: [
-                            dashPerBtc,
-                            ethPerBtc,
-                            ltcPerBtc
+                            (this.props.altPerBtc.dash),
+                            this.props.altPerBtc.eth,
+                            this.props.altPerBtc.ltc
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
@@ -29,19 +26,24 @@ class Chart extends Component {
                 ]
             }            
         }
+        console.log( this.props.altPerBtc.dash)
         this.render = this.render.bind(this)
     }
 
-    render() {                
+    componentWillUpdate() {
+        this.renderChart()
+    }
+
+    renderChart() {
         return(
             <div>
-                <Bar
+                <Doughnut
                 data={this.state.chartData}
                 options={{
 		            maintainAspectRatio: false,
                     title: {
                         display: true,
-                        text: 'USD Value',
+                        text: 'BTC Value',
                         fontSize: 20
                     },
                     legend: {
@@ -49,6 +51,14 @@ class Chart extends Component {
                         position: "right"
                     }
 	            }} />
+            </div>
+        )
+    }
+
+    render() {                
+        return(
+            <div>
+            {this.renderChart()}
             </div>
         )
     }
