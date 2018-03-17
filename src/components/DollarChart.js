@@ -5,22 +5,38 @@ import { Bar } from 'react-chartjs-2'
 class DollarChart extends Component {
     constructor(props) {
         super(props)
+        console.log(this)
+        console.log(props)
         this.state = {            
             chartData: {
-                labels: ['hello', 'bye', 'ciao'],
+                labels: ['Dash', 'ETH', 'LTC'],
                 datasets: [
                     {
-                        label: 'BitCoin per AltCoin',
+                        label: 'USD',
                         data: [
-                            1,
-                            5,
-                            3
+                            this.props.dashUsd,
+                            this.props.ethUsd,
+                            this.props.ltcUsd
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
-                            'rgba(54, 162, 235, 0.6)',
-                            'rgba(255, 206, 86, 0.6)',
-                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(255, 99, 132, 0.6)',
+                        ]
+                    },
+                    {
+                        label: 'EUR',
+                        data: [
+                            this.props.dashEur,
+                            this.props.ethEur,
+                            this.props.ltcEur
+                        ],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
                         ]
                     }
                 ]
@@ -31,7 +47,20 @@ class DollarChart extends Component {
     render() {
         return(
             <div>
-                <h1>hello</h1>
+                <Bar
+                    data={this.state.chartData}
+                    options={{
+                        maintainAspectRatio: false,
+                        title: {
+                            display: true,
+                            text: 'BTC Value',
+                            fontSize: 20
+                        },
+                        legend: {
+                            display: true,
+                            position: "top"
+                        }
+                }} />
             </div>
         )
     }
