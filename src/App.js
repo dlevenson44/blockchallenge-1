@@ -250,9 +250,17 @@ class App extends Component {
         method: 'GET',
     }).then(res => res.json())
     .then(res => {
+        let ethValueContainer = ''
+        let ethValue = res[0].price_usd
+        for(let i = 0; i < ethValue.length - 1; i++ ) {
+            if(ethValue[i] !== (",")) {
+                ethValueContainer += ethValue[i]
+            }
+        }
+        let actualValue = parseFloat(ethValueContainer)
         this.setState({                
             ethCapCoin: {
-                usd: res[0].price_usd,
+                usd: actualValue,
                 trends: {
                     oneHour: res[0].percent_change_1h,
                     oneDay: res[0].percent_change_24h,
