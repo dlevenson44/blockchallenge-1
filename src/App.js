@@ -17,7 +17,12 @@ import Chart from './components/Chart'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {      
+    this.state = { 
+      altPerBtc: {
+        dash: 0,
+        eth: 0,
+        ltc: 0
+      },
       btcValue: 0,
       btcCapCoin: {
         oneHour: 0,
@@ -325,7 +330,17 @@ class App extends Component {
       method: 'GET',
     }).then(res => res.json())
     .then(res => {
+        let dashPerBtc = (this.state.btcValue / this.state.dashCapCoin.usd)
+        let ethPerBtc = (this.state.btcValue / this.state.ethCapCoin.usd)
+        let ltcPerBtc = (this.state.btcValue / this.state.ltcCapCoin.usd)
+        console.log(this.state.btcValue)
+        console.log(dashPerBtc, ethPerBtc, ltcPerBtc)
         this.setState({
+            altPerBtc: {
+                dash: dashPerBtc,
+                eth: ethPerBtc,
+                ltc: ltcPerBtc
+            },
             ltcKraken: {
                 eur: res.result.XLTCZUSD.c[0],
                 trends: {
@@ -339,7 +354,7 @@ class App extends Component {
         })
 		})
 		this.renderChart()
-	}
+    }
 	
 	renderChart() {
 		if (this.state.btcValue !== 0) {
