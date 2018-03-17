@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Bar, Line, Pie } from 'react-chartjs-2'
 
 class Chart extends Component {
     constructor(props) {
         super(props)
-        // let btcValue = this.props.btcValue
-        // console.log(this)
-        
-        this.state = {
-            btcValue: props.btcValue,
+        var btcValue = this.props.btcValue
+        console.log(typeof btcValue)
+        console.log(btcValue)
+        this.state = {            
             chartData: {
                 labels: ['BTC', 'DASH', 'ETH', 'LTC'],
                 datasets: [
                     {
                         label: 'USD Value',
                         data: [
-                            this.props.btcValue,                        
-                            181045,
-                            153060,
-                            106519,
+                            btcValue,
+                            10,
+                            7,
+                            16,
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
@@ -31,21 +31,14 @@ class Chart extends Component {
                 ]
             }            
         }
-        console.log(this.state)
+        this.render = this.render.bind(this)
     }
 
-    componentWillUpdate(props) {
-        this.props
-        props
-        // console.log(this.props)
-    }
-
-    render() {
-        console.log(this.props.btcValue)
+    render() {        
         return(
             <div>
                 <Bar
-                // data={this.state.chartData}
+                data={this.state.chartData}
                 options={{
 		            maintainAspectRatio: false,
                     title: {

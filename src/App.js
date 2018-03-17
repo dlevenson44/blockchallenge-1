@@ -1,5 +1,6 @@
 // import react and stylesheet
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 
 // import crypto components
@@ -10,6 +11,8 @@ import LtcController from './components/LtcController'
 
 // import charts
 import Chart from './components/Chart'
+
+// chartData.datasets[0].data[0 = BTC]
 
 class App extends Component {
   constructor(props) {
@@ -34,9 +37,6 @@ class App extends Component {
       btcPolo: {
         high24hr: 0,
         low24hr: 0,
-        btcToDash: 0,
-        btcToEth: 0,
-        btcToLtc: 0
       },
       dashCapCoin: {
         usd: 0,
@@ -105,7 +105,8 @@ class App extends Component {
         low24hr: 0
       }, 
     }
-    this.btcCoinDesk = this.btcCoinDesk.bind(this)
+		this.btcCoinDesk = this.btcCoinDesk.bind(this)
+		this.renderChart = this.renderChart.bind(this)
   }
 
   componentWillMount() {
@@ -117,9 +118,21 @@ class App extends Component {
           method: 'GET'
       }).then(res => res.json())
       .then(res => {
-        //   console.log(res)
+					var actualValue = 0
+					let btcValueContainer = ''
+					let fetchBtcValue = (res.bpi.USD.rate)
+					// recipeIngredients += ingredients[i] + "~"
+					for(let i = 0; i < fetchBtcValue.length - 1; i++ ) {
+						if (fetchBtcValue[i] !== (",")){
+						btcValueContainer += fetchBtcValue[i]
+						}	
+                    }
+                    // let splitter = btcValueContainer.split("~")
+                    var actualValue = parseFloat(btcValueContainer)
+                    console.log(btcValueContainer)
+                    console.log(actualValue)
           this.setState({
-            btcValue: res.bpi.USD.rate,
+						btcValue: actualValue,
           })
       })
       this.btcCapCoin()
@@ -171,9 +184,6 @@ class App extends Component {
             btcPolo: {
                 high24hr: res.USDT_BTC.high24hr,
                 low24hr: res.USDT_BTC.low24hr,
-                btcToDash: res.BTC_DASH.last,
-                btcToEth: res.BTC_ETH.last,
-                btcToLtc: res.BTC_LTC.last
             },
             dashPolo: {
               high24hr: res.USDT_DASH.high24hr,
@@ -205,7 +215,7 @@ class App extends Component {
                     oneDay: res[0].percent_change_24h,
                     oneWeek: res[0].percent_change_7d
                 }                    
-            }
+						},
         })
     })
     this.dashKraken()
@@ -308,28 +318,49 @@ class App extends Component {
                 }
             }
         })
-    })
-  }
+		})
+		this.renderChart()
+	}
+	
+	renderChart() {
+		if (this.state.btcValue !== 0) {
+			return(
+				<div>
+				<Chart btcValue={this.state.btcValue}
+				btcCapCoin={this.state.btcCapCoin}
+				btcKraken={this.state.btcKraken}
+				btcPolo={this.state.btcPolo}
+				dashCapCoin={this.state.dashCapCoin}
+				dashKraken={this.state.dashKraken}
+				dashPolo={this.state.dashPolo}
+				ethCapCoin={this.state.ethCapCoin}
+				ethKraken={this.state.ethKraken}
+				ethPolo={this.state.ethPolo}
+				ltcCapCoin={this.state.ltcCapCoin}
+				ltcKraken={this.state.ltcKraken}
+				ltcPolo={this.state.ltcPolo} />
+				</div>
+			)
+		} else {
+			return(
+				<div>
+					<p>Loading Chart</p>
+				</div>
+			)
+		}
 
+	}
+	// {this.state.btcValue}
   render() {
+		console.log(this.state.btcValue)
+		console.log(typeof this.state.btcValue)
     //   console.log(this)
     return (
       <div className="App">
         <h1>hello world</h1>
 
-        <Chart btcValue={this.state.btcValue}
-            btcCapCoin={this.state.btcCapCoin}
-            btcKraken={this.state.btcKraken}
-            btcPolo={this.state.btcPolo}
-            dashCapCoin={this.state.dashCapCoin}
-            dashKraken={this.state.dashKraken}
-            dashPolo={this.state.dashPolo}
-            ethCapCoin={this.state.ethCapCoin}
-            ethKraken={this.state.ethKraken}
-            ethPolo={this.state.ethPolo}
-            ltcCapCoin={this.state.ltcCapCoin}
-            ltcKraken={this.state.ltcKraken}
-            ltcPolo={this.state.ltcPolo} />
+        {this.renderChart()}
+			
 
         <BtcController btcValue={this.state.btcValue} 
         btcCapCoin={this.state.btcCapCoin}
@@ -355,8 +386,8 @@ class App extends Component {
         ltcPolo={this.state.ltcPolo} />
 
       </div>
-    );
-  }
+		);			
+	}		
 }
 
 export default App;
