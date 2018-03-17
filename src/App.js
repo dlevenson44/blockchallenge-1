@@ -1,5 +1,6 @@
 // import react and stylesheet
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
 
 // import crypto components
@@ -12,6 +13,7 @@ import LtcController from './components/LtcController'
 import BtcChart from './components/BtcChart'
 import DollarChart from './components/DollarChart'
 import TrendChart from './components/TrendChart'
+import ChartController from './components/ChartController';
 
 class App extends Component {
   constructor(props) {
@@ -383,7 +385,6 @@ class App extends Component {
 				</div>
 			)
 		}
-		this.renderChartDollar()
 	}
 	
 	renderChartDollar() {
@@ -405,7 +406,6 @@ class App extends Component {
 				</div>
 			)
 		}
-		this.renderChartTrend()
 	}
 
 	renderChartTrend() {
@@ -429,19 +429,21 @@ class App extends Component {
 
    render() {
 		return (
-	  <div className="App">
-		<div className="container">
-		<h1>Crypto Tracker</h1>
-		<div className="chart-container">
-			{this.renderChart()}
-			{this.renderChartDollar()}
-			{this.renderChartTrend()}
-		</div>
-		</div>
-	  </div>
+			<Router>
+				<div className="App">
+				<div className="container">
+				<h1>Crypto Tracker</h1>
+				<div className="chart-container">
+				<Route exact path='/' render={() => <ChartController renderChart={this.renderChart()} renderChartDollar={this.renderChartDollar()} renderChartTrend={this.renderChartTrend()} />} />
+				</div>
+				</div>
+				</div>
+			</Router>
 		);			
 	}		
 }
+
+
 
 export default App;
 

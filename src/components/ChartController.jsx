@@ -4,12 +4,13 @@ import BtcChart from './BtcChart'
 import DollarChart from './DollarChart'
 import TrendChart from './TrendChart'
 
-const ChartController = () => {
+const ChartController = (props) => {
+    console.log(props)
     return(
         <div>
-            <BtcChart />
-            <DollarChart />
-            <TrendChart />
+            {props.renderChart}
+            {props.renderChartDollar}
+            {props.renderChartTrend}
         </div>
     )
 }
