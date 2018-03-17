@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2'
 
 class BtcChart extends Component {

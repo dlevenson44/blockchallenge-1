@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2'
 
 class DollarChart extends Component {
