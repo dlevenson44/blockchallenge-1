@@ -12,6 +12,7 @@ import LtcController from './components/LtcController'
 // import charts
 import BtcChart from './components/BtcChart'
 import DollarChart from './components/DollarChart'
+import TrendChart from './components/TrendChart'
 
 class App extends Component {
   constructor(props) {
@@ -405,6 +406,23 @@ class App extends Component {
 				</div>
 			)
 		}
+		this.renderChartTrend()
+	}
+
+	renderChartTrend() {
+		if(this.state.altPerBtc.dash !== 0) {
+			return(
+				<div>
+					<TrendChart />
+				</div>
+			)
+		} else {
+			return(
+				<div>
+					<p>Loading Chart</p>
+				</div>
+			)
+		}
 	}
 
    render() {
@@ -413,6 +431,7 @@ class App extends Component {
 		<h1>hello world</h1>
 		{this.renderChart()}
 		{this.renderChartDollar()}
+		{this.renderChartTrend()}
 
 		<BtcController btcValue={this.state.btcValue} 
 		btcCapCoin={this.state.btcCapCoin}
