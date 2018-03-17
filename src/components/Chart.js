@@ -5,20 +5,17 @@ import { Bar, Line, Pie } from 'react-chartjs-2'
 class Chart extends Component {
     constructor(props) {
         super(props)
-        var btcValue = this.props.btcValue
-        console.log(typeof btcValue)
-        console.log(btcValue)
         this.state = {            
             chartData: {
                 labels: ['BTC', 'DASH', 'ETH', 'LTC'],
                 datasets: [
                     {
-                        label: 'USD Value',
+                        label: 'BitCoin Data',
                         data: [
-                            btcValue,
-                            10,
-                            7,
-                            16,
+                            this.props.btcValue,
+                            this.props.dashCapCoin.usd,
+                            this.props.ethCapCoin.usd,
+                            this.props.ltcCapCoin.usd,
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
@@ -42,13 +39,13 @@ class Chart extends Component {
                 options={{
 		            maintainAspectRatio: false,
                     title: {
-                        display: this.props.displayTitle,
-                        text: 'Largest Cities in Mass',
+                        display: true,
+                        text: 'USD Value',
                         fontSize: 20
                     },
                     legend: {
-                        display: this.props.displayLegend,
-                        position: this.props.legendPosition
+                        display: true,
+                        position: "right"
                     }
 	            }} />
             </div>
