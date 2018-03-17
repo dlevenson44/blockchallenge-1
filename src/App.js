@@ -2,11 +2,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// import components
+// import crypto components
 import BtcController from './components/BtcController'
 import DashController from './components/DashController'
 import EthController from './components/EthController'
 import LtcController from './components/LtcController'
+
+// import charts
+import Chart from './components/Chart'
 
 class App extends Component {
   constructor(props) {
@@ -314,6 +317,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>hello world</h1>
+
+        <Chart />
+
         <BtcController btcValue={this.state.btcValue} 
         btcCapCoin={this.state.btcCapCoin}
         btcKraken={this.state.btcKraken}
