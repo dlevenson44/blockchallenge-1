@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2'
 
-class Chart extends Component {
+class BtcChart extends Component {
     constructor(props) {
         super(props)
         // let dashLabel = this.props.altPerBtc.dash
@@ -55,4 +55,4 @@ class Chart extends Component {
     }
 }
 
-export default Chart
+export default BtcChart

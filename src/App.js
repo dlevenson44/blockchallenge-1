@@ -10,9 +10,7 @@ import EthController from './components/EthController'
 import LtcController from './components/LtcController'
 
 // import charts
-import Chart from './components/Chart'
-
-// chartData.datasets[0].data[0 = BTC]
+import BtcChart from './components/Chart'
 
 class App extends Component {
   constructor(props) {
@@ -364,7 +362,7 @@ class App extends Component {
 		if ((this.state.altPerBtc.dash !== 0) && (this.state.altPerBtc.eth !== Infinity)) {
 			return(
 				<div>
-				<Chart  altPerBtc={this.state.altPerBtc} />
+				<BtcChart  altPerBtc={this.state.altPerBtc} />
 				</div>
 			)
 		} else {
