@@ -5,8 +5,6 @@ import { Bar } from 'react-chartjs-2'
 class DollarChart extends Component {
     constructor(props) {
         super(props)
-        console.log(this)
-        console.log(props)
         this.state = {            
             chartData: {
                 labels: ['Dash', 'ETH', 'LTC'],

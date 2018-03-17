@@ -413,7 +413,7 @@ class App extends Component {
 		if(this.state.altPerBtc.dash !== 0) {
 			return(
 				<div>
-					<TrendChart btcTrends={this.state.btcCapCoin.trends} 
+					<TrendChart btcTrends={this.state.btcCapCoin} 
 					dashTrends={this.state.dashCapCoin.trends} 
 					ethTrends={this.state.ethCapCoin.trends} 
 					ltcTrends={this.state.ltcCapCoin.trends} />
