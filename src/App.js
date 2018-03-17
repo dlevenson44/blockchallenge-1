@@ -18,15 +18,15 @@ class App extends Component {
 	super(props)
 	this.state = { 
 	  altPerBtc: {
-		dash: 0,
-		eth: 0,
-		ltc: 0
+			dash: 0,
+			eth: 0,
+			ltc: 0
 	  },
 	  btcValue: 0,
 	  btcCapCoin: {
-		oneHour: 0,
-		oneDay: 0,
-		oneWeek: 0                   
+			oneHour: 0,
+			oneDay: 0,
+			oneWeek: 0                   
 	  },      
 	  btcKraken: {
 		eur: 0,
@@ -39,8 +39,8 @@ class App extends Component {
 		}
 	  },
 	  btcPolo: {
-		high24hr: 0,
-		low24hr: 0,
+			high24hr: 0,
+			low24hr: 0,
 	  },
 	  dashCapCoin: {
 		usd: 0,
@@ -115,10 +115,6 @@ class App extends Component {
 
   componentWillMount() {
 	this.btcCoinDesk()    
-  }
-
-  componentWillReceiveProps() {
-	this.renderChart()
   }
 
   btcCoinDesk() {
@@ -237,9 +233,17 @@ class App extends Component {
 	  method: 'GET',
 	}).then(res => res.json())
 	.then(res => {
+		let dashValueContainer = ''
+		let dashValue = res.result.DASHEUR.c[0]
+		for(let i = 0; i < dashValue.length - 1; i++) {
+			if(dashValue[i] !== (",")) {
+				dashValueContainer += dashValue[i]
+			}
+		}
+		let actualValue = parseFloat(dashValueContainer)
 		this.setState({
 			dashKraken: {
-				eur: res.result.DASHEUR.c[0],
+				eur: actualValue,
 				trends: {
 					lowAsk: res.result.DASHEUR.a[0],
 					low: res.result.DASHEUR.l[1],
@@ -285,9 +289,17 @@ class App extends Component {
 	  method: 'GET',
 	}).then(res => res.json())
 	.then(res => {
+		let ethValueContainer = ''
+		let ethValue = res.result.XETHZEUR.c[0]
+		for(let i = 0; i < ethValue.length - 1; i++ ) {
+			if(ethValue[i] !== (",")) {
+				ethValueContainer += ethValue[i]
+			}
+		}
+		let actualValue = ethValueContainer
 		this.setState({
 			ethKraken: {
-				eur: res.result.XETHZEUR.c[0],
+				eur: actualValue,
 				trends: {
 					lowAsk: res.result.XETHZEUR.a[0],
 					low: res.result.XETHZEUR.l[1],
@@ -336,8 +348,6 @@ class App extends Component {
 		let dashPerBtc = (this.state.btcValue / this.state.dashCapCoin.usd)
 		let ethPerBtc = (this.state.btcValue / this.state.ethCapCoin.usd)
 		let ltcPerBtc = (this.state.btcValue / this.state.ltcCapCoin.usd)
-		console.log(this.state.btcValue)
-		console.log(dashPerBtc, ethPerBtc, ltcPerBtc)
 		this.setState({
 			altPerBtc: {
 				dash: dashPerBtc,
@@ -377,7 +387,7 @@ class App extends Component {
 	}
 	
 	renderChartDollar() {
-		if(this.state.ltcKraken.eur !== 0) {
+		if(this.state.altPerBtc.dash !== 0) {
 			return(
 				<div>
 					<DollarChart dashUsd={this.state.dashCapCoin.usd} 
@@ -401,9 +411,8 @@ class App extends Component {
 	return (
 	  <div className="App">
 		<h1>hello world</h1>
-		{this.renderChart()}			
-		
-		<DollarChart />
+		{this.renderChart()}
+		{this.renderChartDollar()}
 
 		<BtcController btcValue={this.state.btcValue} 
 		btcCapCoin={this.state.btcCapCoin}
