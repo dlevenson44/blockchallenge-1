@@ -118,19 +118,14 @@ class App extends Component {
           method: 'GET'
       }).then(res => res.json())
       .then(res => {
-					var actualValue = 0
-					let btcValueContainer = ''
-					let fetchBtcValue = (res.bpi.USD.rate)
-					// recipeIngredients += ingredients[i] + "~"
-					for(let i = 0; i < fetchBtcValue.length - 1; i++ ) {
-						if (fetchBtcValue[i] !== (",")){
-						btcValueContainer += fetchBtcValue[i]
-						}	
-                    }
-                    // let splitter = btcValueContainer.split("~")
-                    var actualValue = parseFloat(btcValueContainer)
-                    console.log(btcValueContainer)
-                    console.log(actualValue)
+                let btcValueContainer = ''
+                let fetchBtcValue = (res.bpi.USD.rate)
+                for(let i = 0; i < fetchBtcValue.length - 1; i++ ) {
+                    if (fetchBtcValue[i] !== (",")){
+                    btcValueContainer += fetchBtcValue[i]
+                    }	
+                }
+                let actualValue = parseFloat(btcValueContainer)
           this.setState({
 						btcValue: actualValue,
           })
@@ -207,9 +202,17 @@ class App extends Component {
         method: 'GET',
     }).then(res => res.json())
     .then(res => {
+        let dashValueContainer = ''
+        let dashValue = res[0].price_usd
+        for(let i = 0; i < dashValue.length -1; i++) {
+            if (dashValue[i] !== (",")) {
+                dashValueContainer += dashValue[i]
+            }
+        }
+        let actualValue = parseFloat(dashValueContainer)
         this.setState({                
             dashCapCoin: {
-                usd: res[0].price_usd,
+                usd: actualValue,
                 trends: {
                     oneHour: res[0].percent_change_1h,
                     oneDay: res[0].percent_change_24h,
@@ -350,17 +353,12 @@ class App extends Component {
 		}
 
 	}
-	// {this.state.btcValue}
+
   render() {
-		console.log(this.state.btcValue)
-		console.log(typeof this.state.btcValue)
-    //   console.log(this)
     return (
       <div className="App">
         <h1>hello world</h1>
-
-        {this.renderChart()}
-			
+        {this.renderChart()}			
 
         <BtcController btcValue={this.state.btcValue} 
         btcCapCoin={this.state.btcCapCoin}
