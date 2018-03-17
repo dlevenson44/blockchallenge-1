@@ -5,9 +5,12 @@ import { Doughnut } from 'react-chartjs-2'
 class Chart extends Component {
     constructor(props) {
         super(props)
+        // let dashLabel = this.props.altPerBtc.dash
         this.state = {            
             chartData: {
-                labels: ['DASH per BTC', 'ETH per BTC', 'LTC per BTC'],
+                labels: [`${(this.props.altPerBtc.dash).toPrecision(4)} DASH per BTC`, 
+                    `${(this.props.altPerBtc.eth).toPrecision(4)} ETH per BTC`, 
+                    `${(this.props.altPerBtc.ltc).toPrecision(4)} LTC per BTC`],
                 datasets: [
                     {
                         label: 'BitCoin per AltCoin',
@@ -30,11 +33,7 @@ class Chart extends Component {
         this.render = this.render.bind(this)
     }
 
-    componentWillUpdate() {
-        this.renderChart()
-    }
-
-    renderChart() {
+    render() {                
         return(
             <div>
                 <Doughnut
@@ -48,17 +47,9 @@ class Chart extends Component {
                     },
                     legend: {
                         display: true,
-                        position: "right"
+                        position: "top"
                     }
 	            }} />
-            </div>
-        )
-    }
-
-    render() {                
-        return(
-            <div>
-            {this.renderChart()}
             </div>
         )
     }
