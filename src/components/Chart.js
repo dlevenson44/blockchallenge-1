@@ -5,23 +5,24 @@ import { Bar, Line, Pie } from 'react-chartjs-2'
 class Chart extends Component {
     constructor(props) {
         super(props)
+        var dashPerBtc = (this.props.btcValue / this.props.dashCapCoin.usd)
+        var ethPerBtc = (this.props.btcValue / this.props.ethCapCoin.usd)
+        var ltcPerBtc = (this.props.btcValue / this.props.ltcCapCoin.usd)
         this.state = {            
             chartData: {
-                labels: ['BTC', 'DASH', 'ETH', 'LTC'],
+                labels: ['DASH', 'ETH', 'LTC'],
                 datasets: [
                     {
-                        label: 'BitCoin Data',
+                        label: 'BitCoin per AltCoin',
                         data: [
-                            this.props.btcValue,
-                            this.props.dashCapCoin.usd,
-                            this.props.ethCapCoin.usd,
-                            this.props.ltcCapCoin.usd,
+                            dashPerBtc,
+                            ethPerBtc,
+                            ltcPerBtc
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
                             'rgba(54, 162, 235, 0.6)',
                             'rgba(255, 206, 86, 0.6)',
-                            'rgba(75, 192, 192, 0.6)',
                             'rgba(153, 102, 255, 0.6)',
                         ]
                     }
@@ -31,7 +32,7 @@ class Chart extends Component {
         this.render = this.render.bind(this)
     }
 
-    render() {        
+    render() {                
         return(
             <div>
                 <Bar
