@@ -36,7 +36,7 @@ class BtcChart extends Component {
                 <Doughnut
                 data={this.state.chartData}
                 options={{
-		            maintainAspectRatio: false,
+		            maintainAspectRatio: true,
                     title: {
                         display: true,
                         text: 'BTC Value',
