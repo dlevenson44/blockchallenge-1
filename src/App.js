@@ -1,6 +1,5 @@
 // import react and stylesheet
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import './App.css';
 
 // import crypto components
@@ -429,15 +428,16 @@ class App extends Component {
 	}
 
    render() {
-	return (
+		return (
 	  <div className="App">
-		<h1>hello world</h1>
-		{this.renderChart()}
-		{this.renderChartDollar()}
-		{this.renderChartTrend()}
-
-
-
+		<div className="container">
+		<h1>Crypto Tracker</h1>
+		<div className="chart-container">
+			{this.renderChart()}
+			{this.renderChartDollar()}
+			{this.renderChartTrend()}
+		</div>
+		</div>
 	  </div>
 		);			
 	}		
