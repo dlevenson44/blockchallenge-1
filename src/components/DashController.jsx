@@ -6,8 +6,6 @@ const DashController = (props) => {
     let usHigh24Hr = parseFloat(props.dashPolo.high24hr).toFixed(2)
     let usLow24Hr = parseFloat(props.dashPolo.low24hr).toFixed(2)
     let euro = parseFloat(props.dashKraken.eur).toFixed(2)
-    let highBid = parseFloat(props.dashKraken.trends.highBid).toFixed(2)
-    let lowAsk = parseFloat(props.dashKraken.trends.lowAsk).toFixed(2)
     let euHigh24Hr = parseFloat(props.dashKraken.trends.high).toFixed(2)
     let euLow24Hr = parseFloat(props.dashKraken.trends.low).toFixed(2)
     let btc = parseFloat(props.btcValue).toFixed(2)

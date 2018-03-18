@@ -6,10 +6,6 @@ class ChartController extends Component {
         this.renderContent = this.renderContent.bind(this)
     }
 
-    componentWillUpdate() {
-        this.renderContent()
-    }
-
     renderContent() {
         return(
             <div>
