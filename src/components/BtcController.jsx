@@ -6,8 +6,6 @@ const BtcController = (props) => {
     let usHigh24Hr = parseFloat(props.btcPolo.high24hr).toFixed(2)
     let usLow24Hr = parseFloat(props.btcPolo.low24hr).toFixed(2)
     let euro = parseFloat(props.btcKraken.eur).toFixed(2)
-    let highBid = parseFloat(props.btcKraken.trends.highBid).toFixed(2)
-    let lowAsk = parseFloat(props.btcKraken.trends.lowAsk).toFixed(2)
     let euHigh24Hr = parseFloat(props.btcKraken.trends.high).toFixed(2)
     let euLow24Hr = parseFloat(props.btcKraken.trends.low).toFixed(2)
     
@@ -33,11 +31,11 @@ const BtcController = (props) => {
                     <p>{props.btcCapCoin.oneHour}% change in last hour</p>
                     <p>{props.btcCapCoin.oneDay}% change in last 24 hours</p>
                     <p>{props.btcCapCoin.oneWeek}% change in last 7 days</p>                
-            <h3>BTC US Market Info</h3>
+            <h5>BTC US Market Info</h5>
                 <p>${usd} per BTC</p>
                 <p>${usHigh24Hr} is the 24 hour high</p>
                 <p>${usLow24Hr} is the 24 hour low</p>                            
-            <h3>BTC EU Market Info</h3>
+            <h5>BTC EU Market Info</h5>
                 <p>€{euro} per BTC</p>
                 <p>€{euHigh24Hr} is the 24 hour high</p>
                 <p>€{euLow24Hr} is the 24 hour low</p>            
