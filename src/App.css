@@ -27,10 +27,10 @@ body {
 }
 
 .chart-contianer {
-  /* margin: 20px; */
+  margin: 50px;
 }
 
-h1 {
+h1, h3, h5 {
   color: #E54B4B;
   font-family: 'Roboto Condensed', sans-serif;
 }
