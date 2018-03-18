@@ -383,7 +383,9 @@ class App extends Component {
 	}
 	
 	renderChart() {
-		if ((this.state.altPerBtc.dash !== 0) && (this.state.altPerBtc.eth !== Infinity)) {
+		if ((this.state.altPerBtc.dash !== 0) && (this.state.altPerBtc.dash !== Infinity) && (this.state.altPerBtc.eth !== 0) && (
+			this.state.altPerBtc.eth !== Infinity) && (this.state.altPerBtc.dash !== 0) 
+			&& (this.state.altPerBtc.eth !== Infinity)) {
 			return(
 				<div>
 				<BtcChart  altPerBtc={this.state.altPerBtc} />
@@ -399,7 +401,7 @@ class App extends Component {
 	}
 	
 	renderChartDollar() {
-		if(this.state.altPerBtc.dash !== 0) {
+		if((this.state.dashKraken.eur !== 0) && (this.state.ethKraken.eur !== 0) && (this.state.ltcKraken.eur !== 0)) {
 			return(
 				<div>
 					<DollarChart dashUsd={this.state.dashCapCoin.usd} 

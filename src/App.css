@@ -26,6 +26,10 @@ body {
   font-size: large;
 }
 
+.chart-contianer {
+  /* margin: 20px; */
+}
+
 h1 {
   color: #E54B4B;
   font-family: 'Roboto Condensed', sans-serif;
