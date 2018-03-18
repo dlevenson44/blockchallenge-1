@@ -17,7 +17,7 @@ const EthController = (props) => {
         <div className="crypto-container">
             <h3>BTC Exchange Rate</h3>
                 <p>{ethPerBtc} ETH per BTC</p>
-            <h5>Eth Trends:</h5>
+            <h5>ETH Trends:</h5>
                 <p>{props.ethKraken.trends.trades} trades in the last 24 hours</p>
                 <p>{props.ethCapCoin.trends.oneHour}% change in last hour</p>
                 <p>{props.ethCapCoin.trends.oneDay}% change in last 24 hours</p>
@@ -26,7 +26,7 @@ const EthController = (props) => {
                 <p>${usd} per Eth</p>
                 <p>${usHigh24Hr} is the 24 hour high</p>
                 <p>${usLow24Hr} is the 24 hour low</p>
-            <h5>ETH ETH Market Info</h5>        
+            <h5>ETH EU Market Info</h5>        
                 <p>€{euro} per Eth</p>          
                 <p>€{euHigh24Hr} is the 24 hour high</p>
                 <p>€{euLow24Hr} is the 24 hour low</p>                            
