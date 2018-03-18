@@ -36,9 +36,7 @@ class App extends Component {
 	  btcKraken: {
 		eur: 0,
 		trends: {
-			lowAsk: 0,
 			low: 0,
-			highBid: 0,
 			high: 0,
 			trades: 0
 		}
@@ -58,9 +56,7 @@ class App extends Component {
 	  dashKraken: {
 		eur: 0,
 		trends: {
-			lowAsk: 0,
 			low: 0,
-			highBid: 0,
 			high: 0,
 			trades: 0
 		}
@@ -80,9 +76,7 @@ class App extends Component {
 	  ethKraken: {
 		eur: 0,
 		trends: {
-			lowAsk: 0,
 			low: 0,
-			highBid: 0,
 			high: 0,
 			trades: 0
 		}
@@ -102,9 +96,7 @@ class App extends Component {
 	  ltcKraken: {
 		eur: 0,
 		trends: {
-			lowAsk: 0,
 			low: 0,
-			highBid: 0,
 			high: 0,
 			trades: 0
 		}
@@ -167,9 +159,7 @@ class App extends Component {
 			btcKraken: {
 				eur: res.result.XXBTZCAD.c[0],
 				trends: {
-					lowAsk: res.result.XXBTZCAD.a[0],
 					low: res.result.XXBTZCAD.l[1],
-					highBid: res.result.XXBTZCAD.b[0],
 					high: res.result.XXBTZCAD.h[1],
 					trades: res.result.XXBTZCAD.t[1]
 				}
@@ -250,9 +240,7 @@ class App extends Component {
 			dashKraken: {
 				eur: actualValue,
 				trends: {
-					lowAsk: res.result.DASHEUR.a[0],
 					low: res.result.DASHEUR.l[1],
-					highBid: res.result.DASHEUR.b[0],
 					high: res.result.DASHEUR.h[1],
 					trades: res.result.DASHEUR.t[1]
 				}
@@ -306,9 +294,7 @@ class App extends Component {
 			ethKraken: {
 				eur: actualValue,
 				trends: {
-					lowAsk: res.result.XETHZEUR.a[0],
 					low: res.result.XETHZEUR.l[1],
-					highBid: res.result.XETHZEUR.b[0],
 					high: res.result.XETHZEUR.h[1],
 					trades: res.result.XETHZEUR.t[1]
 				}
@@ -370,9 +356,7 @@ class App extends Component {
 			ltcKraken: {
 				eur: actualValue,
 				trends: {
-					lowAsk: res.result.XLTCZUSD.a[0],
 					low: res.result.XLTCZUSD.l[1],
-					highBid: res.result.XLTCZUSD.b[0],
 					high: res.result.XLTCZUSD.h[1],
 					trades: res.result.XLTCZUSD.t[1]
 				}
