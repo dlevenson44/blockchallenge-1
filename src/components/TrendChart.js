@@ -62,7 +62,7 @@ class TrendChart extends Component {
 
     render() {
         return(
-            <div>
+            <div className="chart-container">
                 <Bar
                     data={this.state.chartData}
                     options={{

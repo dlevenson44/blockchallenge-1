@@ -31,7 +31,7 @@ class BtcChart extends Component {
 
     render() {                
         return(
-            <div>
+            <div className="chart-container">
                 <Doughnut
                 data={this.state.chartData}
                 options={{

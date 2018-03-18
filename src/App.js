@@ -445,7 +445,7 @@ class App extends Component {
 				<div className="container">
 				<h1>Crypto Tracker</h1>
 				<Nav />
-				<div className="chart-container">
+				<div>
 				<Route exact path='/' render={() => <ChartController renderChart={this.renderChart()} renderChartDollar={this.renderChartDollar()} renderChartTrend={this.renderChartTrend()} />} />
 				<Route path='/bitcoin' render={() => <BtcController btcValue={this.state.btcValue} 
 					btcCapCoin={this.state.btcCapCoin}
