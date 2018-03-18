@@ -1,4 +1,8 @@
-.App {
+body {
+  background-color: #EFE8D8;
+}
+
+.App {  
   text-align: center;
 }
 
@@ -20,6 +24,11 @@
 
 .App-intro {
   font-size: large;
+}
+
+h1 {
+  color: #E54B4B;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 @keyframes App-logo-spin {
