@@ -10,7 +10,7 @@ class TrendChart extends Component {
                 labels: ['BTC', 'Dash', 'ETH', 'LTC'],
                 datasets: [
                     {
-                        label: 'USD',
+                        label: '1 Hour Trend',
                         data: [
                             this.props.btcTrends.oneHour,
                             this.props.dashTrends.oneHour,
@@ -26,7 +26,7 @@ class TrendChart extends Component {
                         ]
                     },
                     {
-                        label: 'EUR',
+                        label: '24 Hour Trend',
                         data: [
                             this.props.btcTrends.oneDay,
                             this.props.dashTrends.oneDay,
@@ -41,7 +41,7 @@ class TrendChart extends Component {
                         ]
                     },
                     {
-                        label: 'One Week Trend',
+                        label: '7 Day Trend',
                         data: [
                             this.props.btcTrends.oneWeek,
                             this.props.dashTrends.oneWeek,

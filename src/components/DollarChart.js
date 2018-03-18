@@ -50,7 +50,7 @@ class DollarChart extends Component {
                         maintainAspectRatio: true,
                         title: {
                             display: true,
-                            text: 'BTC Value',
+                            text: 'Currency Value',
                             fontSize: 20
                         },
                         legend: {
