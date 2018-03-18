@@ -19,7 +19,7 @@ const DashController = (props) => {
         <div className="crypto-container">
             <h3>BTC Exchange Rate</h3>  
                 <p>{dashPerBtc} DASH per BTC</p> 
-                <h5>Dash Trends:</h5>
+                <h5>DASH Trends:</h5>
                     <p>{props.dashKraken.trends.trades} trades in the last 24 hours</p>
                     <p>{props.dashCapCoin.trends.oneHour}% change in last hour</p>
                     <p>{props.dashCapCoin.trends.oneDay}% change in last 24 hours</p>
