@@ -301,7 +301,7 @@ class App extends Component {
 				ethValueContainer += ethValue[i]
 			}
 		}
-		let actualValue = ethValueContainer
+		let actualValue = parseFloat(ethValueContainer)
 		this.setState({
 			ethKraken: {
 				eur: actualValue,
@@ -353,6 +353,14 @@ class App extends Component {
 		let dashPerBtc = (this.state.btcValue / this.state.dashCapCoin.usd)
 		let ethPerBtc = (this.state.btcValue / this.state.ethCapCoin.usd)
 		let ltcPerBtc = (this.state.btcValue / this.state.ltcCapCoin.usd)
+		let ltcValueContainer = ''
+		let ltcValue = res.result.XLTCZUSD.c[0]
+		for(let i = 0; i < ltcValue.length - 1; i ++ ) {
+			if (ltcValue[i] !== (",")) {
+				ltcValueContainer += ltcValue[i]
+			}
+		}
+		let actualValue = parseFloat(ltcValueContainer)
 		this.setState({
 			altPerBtc: {
 				dash: dashPerBtc,
@@ -360,7 +368,7 @@ class App extends Component {
 				ltc: ltcPerBtc
 			},
 			ltcKraken: {
-				eur: res.result.XLTCZUSD.c[0],
+				eur: actualValue,
 				trends: {
 					lowAsk: res.result.XLTCZUSD.a[0],
 					low: res.result.XLTCZUSD.l[1],
