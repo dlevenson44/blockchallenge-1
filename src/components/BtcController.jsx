@@ -22,7 +22,7 @@ const BtcController = (props) => {
 
     return(
         <div className="crypto-container">
-            <h3>Crypt Exchange Rates</h3>
+            <h3>Alt-Coin Exchange Rates</h3>
                 <p>{dashPerBtc} DASH per BTC</p>
                 <p>{ethPerBtc} ETH per BTC</p>
                 <p>{ltcPerBtc} LTC per BTC</p>
