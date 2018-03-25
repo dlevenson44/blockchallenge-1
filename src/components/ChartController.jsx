@@ -26,22 +26,3 @@ class ChartController extends Component {
 }
 
 export default ChartController
-
-// import React from 'react'
-
-// const ChartController = (props) => {
-//     componentWillUpdate() {
-//         {props.renderChart}
-//         {props.renderChartDollar}
-//         {props.renderChartTrend}
-//     }
-
-//     console.log(props)
-//     return(
-//         <div>
-//             {props.renderChart}
-//             {props.renderChartDollar}
-//             {props.renderChartTrend}
-//         </div>
-//     )
-// }
